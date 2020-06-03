@@ -52,7 +52,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    authentication_classes =(TokenAuthentication, )
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,

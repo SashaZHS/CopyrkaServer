@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -27,7 +26,12 @@ SECRET_KEY = 'zo$+cvc*_$qbt$i6cx7to7_-ry-o0#3dl^hn@vw(50qxh*@9&j'
 DEBUG = True
 # DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "95.67.68.54",
+    "192.168.1.15",
+    "194.183.181.79",
+    "127.0.0.1",
+]
 AUTH_USER_MODEL = 'users.User'
 
 # Application definition
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     'users',
+    'profile_imgs'
 ]
 
 MIDDLEWARE = [
@@ -75,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Copyrka.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -89,7 +93,6 @@ DATABASES = {
         'PORT': '25060',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -118,8 +121,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -133,8 +134,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
