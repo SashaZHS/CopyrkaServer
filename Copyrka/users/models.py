@@ -2,9 +2,11 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from rest_framework.authentication import TokenAuthentication
 
 
 class UserManager(BaseUserManager):
+
     def create_user(self, email, name, surname, gender, date_of_birth, password=None):
         """
         Creates and saves a User with the given email, date of
@@ -50,6 +52,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+    authentication_classes =(TokenAuthentication, )
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
