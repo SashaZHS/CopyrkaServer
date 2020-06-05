@@ -5,7 +5,7 @@ from numpy import *
 from scipy.spatial.distance import cosine
 from mtcnn.mtcnn import MTCNN
 from keras_vggface.vggface import VGGFace
-from keras_vggface.utils import preprocess_input
+from tensorflow.keras.applications.vgg16 import preprocess_input
 import sys
 
 
@@ -36,7 +36,7 @@ def get_embeddings(filenames):
     # convert into an array of samples
     samples = asarray(faces, 'float32')
     # prepare the face for the model, e.g. center pixels
-    samples = preprocess_input(samples, version=2)
+    samples = preprocess_input(samples)
     # create a vggface model
     model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
     # perform prediction
@@ -53,18 +53,14 @@ def is_match(known_embedding, candidate_embedding, thresh=0.5):
     else:
         print('>face is NOT a Match (%.3f > %.3f)' % (score, thresh))
 
+if __name__ == '__main__':
 
-# define filenames
-filenames = ['karpo1.jpg', 'karpo2.jpg',
-             'karpo3.jpg', 'test1.jpg']
-# get embeddings file filenames
-embeddings = get_embeddings(filenames)
-# define sharon stone
-set_printoptions(threshold=sys.maxsize)
-print(embeddings[0])
-print('Positive Tests')
-is_match(embeddings[0], embeddings[1])
-is_match(embeddings[0], embeddings[2])
-# verify known photos of other people
-print('Negative Tests')
-is_match(embeddings[0], embeddings[3])
+    # define filenames
+    filenames = '/Users/aleksandrzubiuk/Desktop/CopyrkaServer/Copyrka/static/images/96550510_10213858235484838_2593774451346636800_n.jpg'
+
+    # get embeddings file filenames
+    embeddings = get_embeddings(filenames)
+    # define sharon stone
+    print(embeddings[0])
+    print('Positive Tests')
+    # is_match(embeddings[0], embeddings[1])

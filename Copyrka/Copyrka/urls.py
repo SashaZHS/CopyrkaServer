@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import djoser.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/base-auth/', include('rest_framework.urls')),
     path('api/v1/auth/', include('djoser.urls')),
+    # path('api/v1/user/', include('user.urls')),
     path('api/v1/auth_token/', include('djoser.urls.authtoken')),
     path('api/v1/images/', include('profile_imgs.urls')),
+    path('api/v1/facebook/', include('facebook.urls')),
 ]

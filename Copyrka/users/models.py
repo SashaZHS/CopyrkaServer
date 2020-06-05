@@ -31,6 +31,7 @@ class UserManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, email, name, surname, gender, date_of_birth, password=None):
@@ -52,6 +53,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,

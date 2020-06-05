@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "192.168.1.15",
     "194.183.181.79",
     "127.0.0.1",
+    "192.168.1.13",
 ]
 AUTH_USER_MODEL = 'users.User'
 
@@ -47,7 +48,8 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     'users',
-    'profile_imgs'
+    'profile_imgs',
+    'facebook',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,7 @@ REST_FRAMEWORK = {
 
     ]
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
