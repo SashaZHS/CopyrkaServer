@@ -108,3 +108,24 @@ return:
     "email": "test4@gmail.com",
     "id": 4
 }
+
+
+8. Post
+Create new photo
+http://167.99.8.160:8080/api/v1/photos
+
+
+
+9. Get
+Get all photos
+http://167.99.8.160:8080/api/v1/photos
+
+
+10. Get
+Get photo by id
+http://167.99.8.160:8080/api/v1/photo/{id}
+
+
+10. Post
+Find user by photo
+http://167.99.8.160:8080/api/v1/facebook/find
